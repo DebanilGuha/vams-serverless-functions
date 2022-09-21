@@ -23,11 +23,8 @@ var params = {
  */
 const findVehicles= async function(key,updateDoc){
     const table= await getCollection("vehicles");
-    const records = await table.find();
-    console.log(records);
-    const vehicle= records.find(elem => elem._id === key._id)
-
-    
+    const records = await table.find().toArray();
+    const vehicle= records.find(elem => elem._id === key._id);
 }
 
 // Set region
@@ -45,7 +42,11 @@ exports.handler = (event) => {
     });
 };
 
-
+/**
+ * 
+ * @param {string} val 
+ * @returns 
+ */
 const getCollection =  function (val) {
   return new Promise(async(resolve,reject)=>{
     const client = await clientPromise;

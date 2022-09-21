@@ -13,7 +13,11 @@ module.exports.handler = async function(event, context, callback) {
                   var table;
                   //   
                   if (!collections) {
-                                    table = await client.db().createCollection('vehicles');
+                    const response={
+                      statusCode:404,
+                      message:'Vehicles is not found'
+                    }
+                    return response;
                   }
                   else {
                                     table = collections;
