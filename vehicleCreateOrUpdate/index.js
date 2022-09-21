@@ -24,10 +24,7 @@ module.exports.handler = async function(event, context, callback) {
                   if(!isvehicleId && table){
                     table.insertOne(message);
                   }else{
-                    let date1=new Date(Date.parse(isvehicleId.lastUpdateTime));
-                    let date2=new Date(Date.parse(message.lastUpdateTime));
-                    const diff= Math.abs(date2.getTime() - date1.getTime()) / 3600000;
-                    if(diff > 1){
+                    if(Date.parse(isprospectId.lastUpdateTime) > Date.parse(message.lastUpdateTime) ){
                         table.updateOne(
                             {vehicleId: isvehicleId.vehicleId}
                             ,{$set:message})
