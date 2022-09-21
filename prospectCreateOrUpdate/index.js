@@ -8,10 +8,8 @@ module.exports.handler = async function(event, context, callback) {
                   message= JSON.parse(message);
                   
                   const db = client.db();
-                  const collections = await db.collection('prospects');
-                  //                 
-                  var table;
-                  //   
+                  const collections = await db.collection('prospects');         
+                  var table;   
                   if (!collections) {
                     const response={
                       statusCode:404,
